@@ -1,11 +1,11 @@
 import { expect } from 'chai';
-import { IExponentialBackoffOptions } from './ExponentialBackoff';
+import { IExponentialBackoffOptions } from './ExponentialBackoff.js';
 import {
   decorrelatedJitterGenerator,
   fullJitterGenerator,
   halfJitterGenerator,
   noJitterGenerator,
-} from './ExponentialBackoffGenerators';
+} from './ExponentialBackoffGenerators.js';
 
 describe('ExponentialBackoff Generators', () => {
   const generators = [

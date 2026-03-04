@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { stub } from 'sinon';
-import { TaskCancelledError } from '../errors/TaskCancelledError';
-import { abortedSignal } from './abort';
-import { Event, EventEmitter, MemorizingEventEmitter } from './Event';
+import { TaskCancelledError } from '../errors/TaskCancelledError.js';
+import { abortedSignal } from './abort.js';
+import { Event, EventEmitter, MemorizingEventEmitter } from './Event.js';
 
 describe('Event', () => {
   it('emits events', () => {

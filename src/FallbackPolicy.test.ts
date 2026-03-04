@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { stub } from 'sinon';
-import { fallback, handleAll } from './Policy';
+import { fallback, handleAll } from './Policy.js';
 
 describe('FallbackPolicy', () => {
   it('does not fall back when not necessary', async () => {

@@ -1,6 +1,6 @@
-import { neverAbortedSignal } from './common/abort';
-import { ExecuteWrapper, returnOrThrow } from './common/Executor';
-import { IDefaultPolicyContext, IPolicy } from './Policy';
+import { neverAbortedSignal } from './common/abort.js';
+import { ExecuteWrapper, returnOrThrow } from './common/Executor.js';
+import { IDefaultPolicyContext, IPolicy } from './Policy.js';
 
 /**
  * A no-op policy, useful for unit tests and stubs.

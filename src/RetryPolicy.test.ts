@@ -1,11 +1,13 @@
 import { expect, use } from 'chai';
+import chaiAsPromised from 'chai-as-promised';
 import { SinonFakeTimers, SinonStub, stub, useFakeTimers } from 'sinon';
-import { ExponentialBackoff, IterableBackoff, noJitterGenerator } from './backoff/Backoff';
-import { runInChild } from './common/util.test';
-import { handleAll, handleType, handleWhenResult, retry } from './Policy';
+import sinonChai from 'sinon-chai';
+import { ExponentialBackoff, IterableBackoff, noJitterGenerator } from './backoff/Backoff.js';
+import { runInChild } from './common/util.test.js';
+import { handleAll, handleType, handleWhenResult, retry } from './Policy.js';
 
-use(require('sinon-chai'));
-use(require('chai-as-promised'));
+use(sinonChai);
+use(chaiAsPromised);
 
 class MyErrorA extends Error {
   constructor() {
@@ -43,7 +45,7 @@ describe('RetryPolicy', () => {
         maxAttempts: durations.length,
         backoff: new IterableBackoff(durations),
       });
-      p.onRetry(({ delay }) => {
+      p.onRetry(({ delay }: any) => {
         delays.push(delay);
         clock.tick(delay);
       });
@@ -99,7 +101,7 @@ describe('RetryPolicy', () => {
 
     expect(
       await retry(
-        handleWhenResult(r => typeof r === 'number'),
+        handleWhenResult((r: any) => typeof r === 'number'),
         { backoff: new ExponentialBackoff({ generator: noJitterGenerator }), maxAttempts: 2 },
       ).execute(s),
     ).to.equal(1);
@@ -157,7 +159,7 @@ describe('RetryPolicy', () => {
     const err = new Error();
     let calls = 0;
     await expect(
-      retry(handleAll, { maxAttempts: 3 }).execute(({ signal }) => {
+      retry(handleAll, { maxAttempts: 3 }).execute(({ signal }: any) => {
         calls++;
         expect(signal.aborted).to.be.false;
         parent.abort();
@@ -183,7 +185,7 @@ describe('RetryPolicy', () => {
     const s = stub().throws(new MyErrorA());
     const attempts: number[] = [];
     const policy = retry(handleAll, { maxAttempts: 3 });
-    policy.onRetry(({ attempt }) => {
+    policy.onRetry(({ attempt }: any) => {
       attempts.push(attempt);
     });
 

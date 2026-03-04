@@ -1,14 +1,14 @@
-import { BrokenCircuitError } from './BrokenCircuitError';
-import { BulkheadRejectedError } from './BulkheadRejectedError';
-import { HydratingCircuitError } from './HydratingCircuitError';
-import { IsolatedCircuitError } from './IsolatedCircuitError';
-import { TaskCancelledError } from './TaskCancelledError';
+import { BrokenCircuitError } from './BrokenCircuitError.js';
+import { BulkheadRejectedError } from './BulkheadRejectedError.js';
+import { HydratingCircuitError } from './HydratingCircuitError.js';
+import { IsolatedCircuitError } from './IsolatedCircuitError.js';
+import { TaskCancelledError } from './TaskCancelledError.js';
 
-export * from './BrokenCircuitError';
-export * from './BulkheadRejectedError';
-export * from './HydratingCircuitError';
-export * from './IsolatedCircuitError';
-export * from './TaskCancelledError';
+export * from './BrokenCircuitError.js';
+export * from './BulkheadRejectedError.js';
+export * from './HydratingCircuitError.js';
+export * from './IsolatedCircuitError.js';
+export * from './TaskCancelledError.js';
 
 export const isBrokenCircuitError = (e: unknown): e is BrokenCircuitError =>
   !!e && e instanceof Error && 'isBrokenCircuitError' in e;

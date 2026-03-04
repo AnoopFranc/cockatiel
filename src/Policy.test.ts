@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { stub } from 'sinon';
-import { ConsecutiveBreaker } from './breaker/Breaker';
-import { BrokenCircuitError } from './errors/Errors';
+import { ConsecutiveBreaker } from './breaker/Breaker.js';
+import { BrokenCircuitError } from './errors/Errors.js';
 import {
   circuitBreaker,
   fallback,
@@ -13,9 +13,9 @@ import {
   timeout,
   usePolicy,
   wrap,
-} from './Policy';
-import { IRetryContext } from './RetryPolicy';
-import { TimeoutStrategy } from './TimeoutPolicy';
+} from './Policy.js';
+import { IRetryContext } from './RetryPolicy.js';
+import { TimeoutStrategy } from './TimeoutPolicy.js';
 
 class MyError1 extends Error {}
 class MyError2 extends Error {}
@@ -50,7 +50,7 @@ describe('Policy', () => {
 
     expect(policy.wrapped).to.deep.equal(policies);
 
-    const result = await policy.execute(context => {
+    const result = await policy.execute((context: any) => {
       expect(context.signal).to.be.an.instanceOf(AbortSignal);
       expect(context.attempt).to.equal(0);
       return 1234;
@@ -85,8 +85,8 @@ describe('Policy', () => {
       retry(
         handleType(MyError1)
           .orType(MyError2)
-          .orType(MyError3, e => e.message === 'foo')
-          .orWhen(e => e.message === 'potato'),
+          .orType(MyError3, (e: any) => e.message === 'foo')
+          .orWhen((e: any) => e.message === 'potato'),
         { maxAttempts: 10 },
       ).execute(fn),
     ).to.be.rejectedWith(MyError3, 'bar');
@@ -111,8 +111,8 @@ describe('Policy', () => {
       await retry(
         handleResultType(MyError1)
           .orResultType(MyError2)
-          .orResultType(MyError3, e => e.message === 'foo')
-          .orWhenResult(e => e === 'potato'),
+          .orResultType(MyError3, (e: any) => e.message === 'foo')
+          .orWhenResult((e: any) => e === 'potato'),
         { maxAttempts: 10 },
       ).execute(fn),
     ).to.equal('ok!');

@@ -1,16 +1,16 @@
 import { expect } from 'chai';
-import { BrokenCircuitError } from './BrokenCircuitError';
-import { BulkheadRejectedError } from './BulkheadRejectedError';
+import { BrokenCircuitError } from './BrokenCircuitError.js';
+import { BulkheadRejectedError } from './BulkheadRejectedError.js';
 import {
   isBrokenCircuitError,
   isBulkheadRejectedError,
   isHydratingCircuitError,
   isIsolatedCircuitError,
   isTaskCancelledError,
-} from './Errors';
-import { HydratingCircuitError } from './HydratingCircuitError';
-import { IsolatedCircuitError } from './IsolatedCircuitError';
-import { TaskCancelledError } from './TaskCancelledError';
+} from './Errors.js';
+import { HydratingCircuitError } from './HydratingCircuitError.js';
+import { IsolatedCircuitError } from './IsolatedCircuitError.js';
+import { TaskCancelledError } from './TaskCancelledError.js';
 
 describe('Errors', () => {
   describe('isBrokenCircuitError', () => {

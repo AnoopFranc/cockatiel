@@ -1,4 +1,4 @@
-import { TaskCancelledError } from '../errors/TaskCancelledError';
+import { TaskCancelledError } from '../errors/TaskCancelledError.js';
 
 /**
  * Type that can be disposed.

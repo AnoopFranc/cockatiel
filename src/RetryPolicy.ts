@@ -1,9 +1,9 @@
-import { IBackoff, IBackoffFactory } from './backoff/Backoff';
-import { ConstantBackoff } from './backoff/ConstantBackoff';
-import { neverAbortedSignal } from './common/abort';
-import { EventEmitter } from './common/Event';
-import { ExecuteWrapper } from './common/Executor';
-import { FailureReason, IDefaultPolicyContext, IPolicy } from './Policy';
+import { IBackoff, IBackoffFactory } from './backoff/Backoff.js';
+import { ConstantBackoff } from './backoff/ConstantBackoff.js';
+import { neverAbortedSignal } from './common/abort.js';
+import { EventEmitter } from './common/Event.js';
+import { ExecuteWrapper } from './common/Executor.js';
+import { FailureReason, IDefaultPolicyContext, IPolicy } from './Policy.js';
 
 const delay = (duration: number, unref: boolean) =>
   new Promise(resolve => {
@@ -56,12 +56,16 @@ export class RetryPolicy implements IPolicy<IRetryContext> {
   /**
    * @inheritdoc
    */
-  public readonly onSuccess = this.executor.onSuccess;
+  public get onSuccess() {
+    return this.executor.onSuccess;
+  }
 
   /**
    * @inheritdoc
    */
-  public readonly onFailure = this.executor.onFailure;
+  public get onFailure() {
+    return this.executor.onFailure;
+  }
 
   /**
    * Emitter that fires when we retry a call, before any backoff.

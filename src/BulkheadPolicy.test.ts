@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { promisify } from 'util';
-import { abortedSignal } from './common/abort';
-import { defer } from './common/defer';
-import { BulkheadRejectedError } from './errors/BulkheadRejectedError';
-import { TaskCancelledError } from './errors/Errors';
-import { bulkhead } from './Policy';
+import { abortedSignal } from './common/abort.js';
+import { defer } from './common/defer.js';
+import { BulkheadRejectedError } from './errors/BulkheadRejectedError.js';
+import { TaskCancelledError } from './errors/Errors.js';
+import { bulkhead } from './Policy.js';
 
 const delay = promisify(setTimeout);
 

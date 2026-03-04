@@ -1,10 +1,10 @@
-import { IDisposable, onAbort } from './Event';
+import { IDisposable, onAbort } from './Event.js';
 
-export const neverAbortedSignal = new AbortController().signal;
+export const neverAbortedSignal: AbortSignal = new AbortController().signal;
 
 const cancelledSrc = new AbortController();
 cancelledSrc.abort();
-export const abortedSignal = cancelledSrc.signal;
+export const abortedSignal: AbortSignal = cancelledSrc.signal;
 
 const noop: () => void = () => {};
 
@@ -25,7 +25,7 @@ export const deriveAbortController = (
     ctrl.abort(signal.reason);
   } else {
     const abortEvt = onAbort(signal);
-    abortEvt.event(reason => ctrl.abort(reason));
+    abortEvt.event((reason: any) => ctrl.abort(reason));
     dispose = abortEvt.dispose;
   }
 

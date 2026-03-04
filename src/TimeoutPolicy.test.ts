@@ -1,11 +1,11 @@
 import { expect } from 'chai';
 import { SinonStub, stub } from 'sinon';
 import { promisify } from 'util';
-import { ExponentialBackoff } from './backoff/ExponentialBackoff';
-import { runInChild } from './common/util.test';
-import { TaskCancelledError } from './errors/TaskCancelledError';
-import { handleAll, retry, timeout, wrap } from './Policy';
-import { TimeoutPolicy, TimeoutStrategy } from './TimeoutPolicy';
+import { ExponentialBackoff } from './backoff/ExponentialBackoff.js';
+import { runInChild } from './common/util.test.js';
+import { TaskCancelledError } from './errors/TaskCancelledError.js';
+import { handleAll, retry, timeout, wrap } from './Policy.js';
+import { TimeoutPolicy, TimeoutStrategy } from './TimeoutPolicy.js';
 
 const delay = promisify(setTimeout);
 

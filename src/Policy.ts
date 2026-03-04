@@ -1,12 +1,12 @@
-import { ConstantBackoff, IBackoffFactory } from './backoff/Backoff';
-import { BulkheadPolicy } from './BulkheadPolicy';
-import { CircuitBreakerPolicy, ICircuitBreakerOptions } from './CircuitBreakerPolicy';
-import { Event } from './common/Event';
-import { ExecuteWrapper } from './common/Executor';
-import { FallbackPolicy } from './FallbackPolicy';
-import { NoopPolicy } from './NoopPolicy';
-import { IRetryBackoffContext, RetryPolicy } from './RetryPolicy';
-import { TimeoutPolicy, TimeoutStrategy } from './TimeoutPolicy';
+import { ConstantBackoff, IBackoffFactory } from './backoff/Backoff.js';
+import { BulkheadPolicy } from './BulkheadPolicy.js';
+import { CircuitBreakerPolicy, ICircuitBreakerOptions } from './CircuitBreakerPolicy.js';
+import { Event } from './common/Event.js';
+import { ExecuteWrapper } from './common/Executor.js';
+import { FallbackPolicy } from './FallbackPolicy.js';
+import { NoopPolicy } from './NoopPolicy.js';
+import { IRetryBackoffContext, RetryPolicy } from './RetryPolicy.js';
+import { TimeoutPolicy, TimeoutStrategy } from './TimeoutPolicy.js';
 
 type Constructor<T> = new (...args: any) => T;
 
@@ -101,8 +101,11 @@ export interface IPolicy<
   ): Promise<T | AltReturn>;
 }
 
-export interface IMergedPolicy<A extends IDefaultPolicyContext, B, W extends IPolicy<any, any>[]>
-  extends IPolicy<A, B> {
+export interface IMergedPolicy<
+  A extends IDefaultPolicyContext,
+  B,
+  W extends IPolicy<any, any>[],
+> extends IPolicy<A, B> {
   readonly wrapped: W;
 }
 

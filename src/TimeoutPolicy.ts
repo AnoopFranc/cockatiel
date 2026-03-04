@@ -1,8 +1,8 @@
-import { deriveAbortController } from './common/abort';
-import { Event, EventEmitter, onAbort } from './common/Event';
-import { ExecuteWrapper, returnOrThrow } from './common/Executor';
-import { TaskCancelledError } from './errors/TaskCancelledError';
-import { IPolicy } from './Policy';
+import { deriveAbortController } from './common/abort.js';
+import { Event, EventEmitter, onAbort } from './common/Event.js';
+import { ExecuteWrapper, returnOrThrow } from './common/Executor.js';
+import { TaskCancelledError } from './errors/TaskCancelledError.js';
+import { IPolicy } from './Policy.js';
 
 export enum TimeoutStrategy {
   /**
@@ -44,12 +44,16 @@ export class TimeoutPolicy implements IPolicy<ICancellationContext> {
   /**
    * @inheritdoc
    */
-  public readonly onFailure = this.executor.onFailure;
+  public get onFailure() {
+    return this.executor.onFailure;
+  }
 
   /**
    * @inheritdoc
    */
-  public readonly onSuccess = this.executor.onSuccess;
+  public get onSuccess() {
+    return this.executor.onSuccess;
+  }
 
   constructor(
     private readonly duration: number,

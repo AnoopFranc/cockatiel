@@ -1,4 +1,4 @@
-import { IBackoff, IBackoffFactory } from './Backoff';
+import { IBackoff, IBackoffFactory } from './Backoff.js';
 
 export type DelegateBackoffFn<T, S = void> = (
   context: T,

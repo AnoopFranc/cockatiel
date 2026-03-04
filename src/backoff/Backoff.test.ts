@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { IBackoffFactory } from './Backoff';
+import { IBackoffFactory } from './Backoff.js';
 
 export const expectDurations = <T>(
   backoffFactory: IBackoffFactory<T> | undefined,

@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.0 (TBA)
+
+- **breaking:** updated minimum Node version to 22, and cocktiel is now built as a ES module
+
 ## 3.2.1
 
 - **fix:** restore breaker state when circuit state is restored
@@ -54,7 +58,6 @@
   ```
 
   The full changes are:
-
   - `Policy.retry()` -> `retry(policy, options)`
   - `Policy.circuitBreaker(halfOpenAfter, breaker)` -> `retry(policy, { halfOpenAfter: number, breaker: IBreaker })`
   - `Policy.fallback(valueOrFactory)` -> `fallback(policy, valueOrFactory)`
@@ -72,7 +75,6 @@
   We simplified it to be a simple options object given in `policy`, where the max attempts is also given. For the backoff itself, you pass the underlying backoff generator (or a custom one)
 
   Instead of:
-
   - `Policy.retry().attempts(2).delay(5)`, you can write `retry(policy, { maxAttempts: 2, backoff: new ConstantBackoff(5) })`
   - `Policy.retry().delay([100, 200, 300])`, you can write `retry(policy, { maxAttempts: 3, backoff: new IterableBackoff(100, 200, 300) })`
   - `Policy.retry().exponential(opts)`, you can write `retry(policy, { backoff: new ExponentialBackoff(opts) })`
@@ -91,7 +93,6 @@
 - **breaking:** **refactor:** move to using native `AbortSignal` over `CancellationToken`.
 
   Previously, this package provided its own implementation of cancellation via the `CancellationTokenSource` and `CancellationToken`. Now, we use the native `AbortSignal` which is available in browsers and Node.js since Node 16. To migrate, instead of...
-
   - accessing `context.cancellationToken`, access `context.signal` which is an `AbortSignal`,
   - pass in an `AbortSignal` as the second argument to `Policy.execute`, instead of a `CancellationToken`,
   - use `signal.aborted` instead of `signal.isCancellationRequested` to check for cancellation,

@@ -1,11 +1,11 @@
-import { ConstantBackoff, IBackoff, IBackoffFactory } from './backoff/Backoff';
-import { IBreaker } from './breaker/Breaker';
-import { neverAbortedSignal } from './common/abort';
-import { EventEmitter } from './common/Event';
-import { ExecuteWrapper, returnOrThrow } from './common/Executor';
-import { BrokenCircuitError, HydratingCircuitError, TaskCancelledError } from './errors/Errors';
-import { IsolatedCircuitError } from './errors/IsolatedCircuitError';
-import { FailureReason, IDefaultPolicyContext, IPolicy } from './Policy';
+import { ConstantBackoff, IBackoff, IBackoffFactory } from './backoff/Backoff.js';
+import { IBreaker } from './breaker/Breaker.js';
+import { neverAbortedSignal } from './common/abort.js';
+import { EventEmitter } from './common/Event.js';
+import { ExecuteWrapper, returnOrThrow } from './common/Executor.js';
+import { BrokenCircuitError, HydratingCircuitError, TaskCancelledError } from './errors/Errors.js';
+import { IsolatedCircuitError } from './errors/IsolatedCircuitError.js';
+import { FailureReason, IDefaultPolicyContext, IPolicy } from './Policy.js';
 
 export enum CircuitState {
   /**
@@ -120,12 +120,16 @@ export class CircuitBreakerPolicy implements IPolicy {
   /**
    * @inheritdoc
    */
-  public readonly onSuccess = this.executor.onSuccess;
+  public get onSuccess() {
+    return this.executor.onSuccess;
+  }
 
   /**
    * @inheritdoc
    */
-  public readonly onFailure = this.executor.onFailure;
+  public get onFailure() {
+    return this.executor.onFailure;
+  }
 
   /**
    * Gets the current circuit breaker state.

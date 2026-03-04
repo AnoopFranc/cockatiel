@@ -1,18 +1,18 @@
 import { expect } from 'chai';
 import { SinonFakeTimers, SinonStub, stub, useFakeTimers } from 'sinon';
 import { promisify } from 'util';
-import { IBackoffFactory } from './backoff/Backoff';
-import { IterableBackoff } from './backoff/IterableBackoff';
-import { ConsecutiveBreaker } from './breaker/Breaker';
+import { IBackoffFactory } from './backoff/Backoff.js';
+import { IterableBackoff } from './backoff/IterableBackoff.js';
+import { ConsecutiveBreaker } from './breaker/Breaker.js';
 import {
   CircuitBreakerPolicy,
   CircuitState,
   IHalfOpenAfterBackoffContext,
-} from './CircuitBreakerPolicy';
-import { abortedSignal } from './common/abort';
-import { BrokenCircuitError, TaskCancelledError } from './errors/Errors';
-import { IsolatedCircuitError } from './errors/IsolatedCircuitError';
-import { circuitBreaker, handleAll, handleType } from './Policy';
+} from './CircuitBreakerPolicy.js';
+import { abortedSignal } from './common/abort.js';
+import { BrokenCircuitError, TaskCancelledError } from './errors/Errors.js';
+import { IsolatedCircuitError } from './errors/IsolatedCircuitError.js';
+import { circuitBreaker, handleAll, handleType } from './Policy.js';
 
 class MyException extends Error {}
 
@@ -246,7 +246,7 @@ describe('CircuitBreakerPolicy', () => {
     await circuitBreaker(handleAll, {
       halfOpenAfter: 1000,
       breaker: new ConsecutiveBreaker(3),
-    }).execute(({ signal }) => {
+    }).execute(({ signal }: { signal?: any }) => {
       expect(signal.aborted).to.be.false;
       parent.abort();
       expect(signal.aborted).to.be.true;

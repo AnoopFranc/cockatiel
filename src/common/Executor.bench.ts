@@ -1,4 +1,4 @@
-import { EventEmitter } from './Event';
+import { EventEmitter } from './Event.js';
 
 declare function bench(name: string, fn: () => void): void;
 

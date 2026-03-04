@@ -1,5 +1,5 @@
-import { CircuitState } from '../CircuitBreakerPolicy';
-import { IBreaker } from './Breaker';
+import { CircuitState } from '../CircuitBreakerPolicy.js';
+import { IBreaker } from './Breaker.js';
 
 export interface ICountBreakerOptions {
   /**

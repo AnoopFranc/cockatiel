@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { SinonStub, stub } from 'sinon';
-import { ExecuteWrapper } from './Executor';
+import { ExecuteWrapper } from './Executor.js';
 
 class HandledError extends Error {}
 

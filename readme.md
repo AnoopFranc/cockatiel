@@ -6,7 +6,9 @@
 
 Cockatiel is resilience and transient-fault-handling library that allows developers to express policies such as Retry, Circuit Breaker, Timeout, Bulkhead Isolation, and Fallback. .NET has [Polly](https://github.com/App-vNext/Polly), a wonderful one-stop shop for all your fault handling needs--I missed having such a library for my JavaScript projects, and grew tired of copy-pasting retry logic between my projects. Hence, this module!
 
-    npm install --save cockatiel
+```
+npm install --save cockatiel
+```
 
 Then go forth with confidence:
 
@@ -321,7 +323,6 @@ To use `retry()`, first pass in the [Policy](#Policy) to use, and then the optio
 
 - `maxAttempts`: the number of attempts to make before giving up
 - `backoff`: a generator that tells Cockatiel how long to wait between attempts. A number of backoff implementations are provided out of the box:
-
   - [ConstantBackoff](#constantbackoff)
   - [IterableBackoff](#iterablebackoff)
   - [ExponentialBackoff](#exponentialbackoff)

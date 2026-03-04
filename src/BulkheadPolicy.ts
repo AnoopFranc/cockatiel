@@ -1,10 +1,10 @@
-import { neverAbortedSignal } from './common/abort';
-import { defer } from './common/defer';
-import { EventEmitter } from './common/Event';
-import { ExecuteWrapper } from './common/Executor';
-import { BulkheadRejectedError } from './errors/BulkheadRejectedError';
-import { TaskCancelledError } from './errors/Errors';
-import { IDefaultPolicyContext, IPolicy } from './Policy';
+import { neverAbortedSignal } from './common/abort.js';
+import { defer } from './common/defer.js';
+import { EventEmitter } from './common/Event.js';
+import { ExecuteWrapper } from './common/Executor.js';
+import { BulkheadRejectedError } from './errors/BulkheadRejectedError.js';
+import { TaskCancelledError } from './errors/Errors.js';
+import { IDefaultPolicyContext, IPolicy } from './Policy.js';
 
 interface IQueueItem<T> {
   signal: AbortSignal;
@@ -14,7 +14,7 @@ interface IQueueItem<T> {
 }
 
 export class BulkheadPolicy implements IPolicy {
-  public declare readonly _altReturn: never;
+  declare public readonly _altReturn: never;
 
   private active = 0;
   private readonly queue: Array<IQueueItem<unknown>> = [];

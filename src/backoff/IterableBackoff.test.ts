@@ -1,5 +1,5 @@
-import { expectDurations } from './Backoff.test';
-import { IterableBackoff } from './IterableBackoff';
+import { expectDurations } from './Backoff.test.js';
+import { IterableBackoff } from './IterableBackoff.js';
 
 describe('IterableBackoff', () => {
   it('works', () => {

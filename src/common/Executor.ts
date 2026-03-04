@@ -1,5 +1,5 @@
-import { FailureReason, IFailureEvent, ISuccessEvent } from '../Policy';
-import { EventEmitter } from './Event';
+import { FailureReason, IFailureEvent, ISuccessEvent } from '../Policy.js';
+import { EventEmitter } from './Event.js';
 
 export type FailureOrSuccess<R> = FailureReason<R> | { success: R };
 

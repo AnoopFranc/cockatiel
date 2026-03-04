@@ -1,4 +1,4 @@
-import { IBreaker } from './Breaker';
+import { IBreaker } from './Breaker.js';
 
 export class ConsecutiveBreaker implements IBreaker {
   /**

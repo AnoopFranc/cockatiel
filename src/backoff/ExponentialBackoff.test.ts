@@ -1,6 +1,6 @@
-import { expectDurations } from './Backoff.test';
-import { ExponentialBackoff } from './ExponentialBackoff';
-import { noJitterGenerator } from './ExponentialBackoffGenerators';
+import { expectDurations } from './Backoff.test.js';
+import { ExponentialBackoff } from './ExponentialBackoff.js';
+import { noJitterGenerator } from './ExponentialBackoffGenerators.js';
 
 describe('ExponentialBackoff', () => {
   it('works', () => {

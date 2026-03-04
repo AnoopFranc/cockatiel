@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { ConsecutiveBreaker } from './ConsecutiveBreaker';
+import { ConsecutiveBreaker } from './ConsecutiveBreaker.js';
 
 describe('ConsecutiveBreaker', () => {
   it('works', () => {

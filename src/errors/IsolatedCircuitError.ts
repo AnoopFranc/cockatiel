@@ -1,4 +1,4 @@
-import { BrokenCircuitError } from './BrokenCircuitError';
+import { BrokenCircuitError } from './BrokenCircuitError.js';
 
 export class IsolatedCircuitError extends BrokenCircuitError {
   public readonly isIsolatedCircuitError = true;

@@ -9,18 +9,12 @@
     "noUnusedParameters": true,
     "strict": true,
     "inlineSources": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "newLine": "LF",
-    "module": "commonjs",
-    "target": "ES2021",
-    "lib": ["ES2021"],
+    "module": "nodenext",
+    "target": "ES2023",
+    "lib": ["ES2023"],
     "outDir": "dist",
-    "types": [
-      "node",
-      "mocha",
-      "chai-subset",
-      "sinon-chai",
-      "chai-as-promised"
-    ]
+    "types": ["node", "mocha", "sinon-chai", "chai-as-promised"]
   }
 }

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { deriveAbortController } from './abort';
+import { deriveAbortController } from './abort.js';
 
 describe('deriveAbortController', () => {
   it('should return an aborted AbortController when the provided signal is already aborted', () => {

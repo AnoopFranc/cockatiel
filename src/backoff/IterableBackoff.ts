@@ -1,4 +1,4 @@
-import { IBackoff, IBackoffFactory } from './Backoff';
+import { IBackoff, IBackoffFactory } from './Backoff.js';
 
 export class IterableBackoff implements IBackoffFactory<unknown> {
   /**

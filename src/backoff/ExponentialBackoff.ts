@@ -1,5 +1,5 @@
-import { IBackoff, IBackoffFactory } from './Backoff';
-import { decorrelatedJitterGenerator, GeneratorFn } from './ExponentialBackoffGenerators';
+import { IBackoff, IBackoffFactory } from './Backoff.js';
+import { decorrelatedJitterGenerator, GeneratorFn } from './ExponentialBackoffGenerators.js';
 
 /**
  * Options passed into {@link ExponentialBackoff}.

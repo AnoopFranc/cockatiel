@@ -1,6 +1,6 @@
-import { neverAbortedSignal } from './common/abort';
-import { ExecuteWrapper } from './common/Executor';
-import { IDefaultPolicyContext, IPolicy } from './Policy';
+import { neverAbortedSignal } from './common/abort.js';
+import { ExecuteWrapper } from './common/Executor.js';
+import { IDefaultPolicyContext, IPolicy } from './Policy.js';
 
 export class FallbackPolicy<AltReturn> implements IPolicy<IDefaultPolicyContext, AltReturn> {
   declare readonly _altReturn: AltReturn;
@@ -8,12 +8,16 @@ export class FallbackPolicy<AltReturn> implements IPolicy<IDefaultPolicyContext,
   /**
    * @inheritdoc
    */
-  public readonly onSuccess = this.executor.onSuccess;
+  public get onSuccess() {
+    return this.executor.onSuccess;
+  }
 
   /**
    * @inheritdoc
    */
-  public readonly onFailure = this.executor.onFailure;
+  public get onFailure() {
+    return this.executor.onFailure;
+  }
 
   constructor(
     private readonly executor: ExecuteWrapper,
